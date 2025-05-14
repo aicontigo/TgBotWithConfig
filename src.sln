@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TgBotWithConfig", "TgBotWithConfig\TgBotWithConfig.csproj", "{3160F959-CB4A-35F9-C919-4EC2ACCF4F61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3160F959-CB4A-35F9-C919-4EC2ACCF4F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3160F959-CB4A-35F9-C919-4EC2ACCF4F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3160F959-CB4A-35F9-C919-4EC2ACCF4F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3160F959-CB4A-35F9-C919-4EC2ACCF4F61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC4F8327-EF4C-46B1-B0A8-A56A0907E359}
+	EndGlobalSection
+EndGlobal

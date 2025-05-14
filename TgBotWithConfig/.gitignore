@@ -1,0 +1,12 @@
+# bins and objs
+bin/
+obj/
+
+# IDE configs
+.vscode/
+*.user
+*.suo
+
+
+#appsettings.Development.json
+#appsettings.Production.json
