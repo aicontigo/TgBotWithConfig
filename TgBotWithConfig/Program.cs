@@ -13,14 +13,11 @@ internal class Program
             .AddJsonFile($"appsettings.{environment}.json", optional: false, reloadOnChange: true)
             .Build();
 
-        var token = config["Telegram:BotToken"];
-        if (string.IsNullOrEmpty(token))
-        {
-            Console.WriteLine("Bot token is not configured.");
-            return;
-        }
+        var telegramConfiguration = new TelegramConfiguration();
+        config.GetSection("Telegram").Bind(telegramConfiguration);
+        
 
-        var botService = new TelegramBotService(token);
+        var botService = new TelegramBotService(telegramConfiguration);
         await botService.StartAsync();
 
         Console.ReadLine();

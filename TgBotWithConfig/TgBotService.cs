@@ -8,15 +8,15 @@ namespace TgBotWithConfig;
 internal class TelegramBotService
 {
     private readonly string _token;
+    private readonly string _responsePrefix;
+
     private TelegramBotClient? _botClient;
     private CancellationTokenSource? _cts;
 
-    public TelegramBotService(string token)
+    public TelegramBotService(TelegramConfiguration config)
     {
-        if (string.IsNullOrWhiteSpace(token))
-            throw new ArgumentException("Token cannot be null or empty.", nameof(token));
-
-        _token = token;
+        _token = config.BotToken ?? throw new ArgumentNullException(nameof(config.BotToken), "Bot token cannot be null.");
+        _responsePrefix = config.ResponsePrefix;
     }
 
     public async Task StartAsync()
@@ -51,7 +51,7 @@ internal class TelegramBotService
             return;
 
         var chatId = update.Message.Chat.Id;
-        var messageText = update.Message.Text;
+        var messageText = $"{_responsePrefix}{update.Message.Text}";
 
         Console.WriteLine($"Received message: {messageText}");
         await bot.SendMessage(chatId, messageText, cancellationToken: token);
