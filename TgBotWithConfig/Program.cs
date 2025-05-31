@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 
+namespace TgBotWithConfig;
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
 
@@ -12,7 +13,17 @@ internal class Program
             .AddJsonFile($"appsettings.{environment}.json", optional: false, reloadOnChange: true)
             .Build();
 
-        Console.WriteLine($"Bot's token: {config["Telegram:BotToken"]}");
+        var token = config["Telegram:BotToken"];
+        if (string.IsNullOrEmpty(token))
+        {
+            Console.WriteLine("Bot token is not configured.");
+            return;
+        }
+
+        var botService = new TelegramBotService(token);
+        await botService.StartAsync();
+
         Console.ReadLine();
+        botService.Stop();
     }
 }
